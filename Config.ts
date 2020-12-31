@@ -1,8 +1,5 @@
 require('dotenv').config();
 
-import bitcore from 'bitcore-lib-cash';
-import { BigNumber } from 'bignumber.js';
-
 export interface ServerConfig {
     mailgunApiKey: string;
     mailgunDomain: string;

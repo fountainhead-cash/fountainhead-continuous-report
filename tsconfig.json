@@ -65,7 +65,5 @@
     "resolveJsonModule": true
   },
   "exclude": [
-    "bitcore",
-    "DefinitelyTyped"
   ]
 }

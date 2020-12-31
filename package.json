@@ -5,8 +5,8 @@
   "scripts": {
     "start": "ts-node-dev --respawn --transpile-only ./run.ts",
     "build": "tsc",
-    "test": "mocha --timeout 5000 --reporter mochawesome -r ts-node/register ./test/*",
-    "lint": "tsc --noEmit && eslint '**/*.{js,ts,tsx}'"
+    "test": "mocha --timeout 10000 --reporter mochawesome -r ts-node/register ./test/*",
+    "lint": "tsc --noEmit && eslint '*.{js,ts,tsx}' 'test/*.{js,ts,tsx}'"
   },
   "dependencies": {
     "@types/axios": "^0.14.0",

@@ -1,12 +1,9 @@
 import { Config } from './../Config';
-import { Log } from './../Log';
 
 import chai from 'chai';
 import * as sinon from 'sinon';
 import axios, { AxiosInstance } from 'axios';
-import { BlockNotification, ClientReadableStream,
-         GetMempoolResponse, GrpcClient,
-         TransactionNotification } from "grpc-bchrpc-node";
+import { GrpcClient } from "grpc-bchrpc-node";
 import EventSource from 'eventsource';
 
 
@@ -118,7 +115,7 @@ if (Config.bitsocketEnabled) describe('#BITSOCKET status', () => {
         };
 
         it('successful message', (done) => {
-            let es = new EventSource(`${Config.bitsocketUrl}/s/${toBitDBQuery(q)}`);
+            const es = new EventSource(`${Config.bitsocketUrl}/s/${toBitDBQuery(q)}`);
             es.onerror = (e) => {
                 chai.assert.equal(`onerror ${JSON.stringify(e)}`, 'error');
                 done();
@@ -167,7 +164,7 @@ if (Config.slpstreamEnabled) describe('#SLPSTREAM status', () => {
         };
 
         it('successful message', (done) => {
-            let es = new EventSource(`${Config.slpstreamUrl}/s/${toBitDBQuery(q)}`);
+            const es = new EventSource(`${Config.slpstreamUrl}/s/${toBitDBQuery(q)}`);
             es.onerror = (e) => {
                 chai.assert.equal(`onerror ${JSON.stringify(e)}`, 'error');
                 done();
@@ -279,7 +276,7 @@ if (Config.slpsocketEnabled) describe('#SLPSOCKET status', () => {
         };
 
         it('successful message', (done) => {
-            let es = new EventSource(`${Config.slpsocketUrl}/s/${toBitDBQuery(q)}`);
+            const es = new EventSource(`${Config.slpsocketUrl}/s/${toBitDBQuery(q)}`);
             es.onerror = (e) => {
                 chai.assert.equal(`onerror ${JSON.stringify(e)}`, 'error');
                 done();
