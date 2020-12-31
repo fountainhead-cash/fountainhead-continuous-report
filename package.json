@@ -1,0 +1,40 @@
+{
+  "name": "fountainhead-continuous-report",
+  "version": "0.0.1",
+  "description": "Continuous Reporting For Fountainhead",
+  "scripts": {
+    "start": "ts-node-dev --respawn --transpile-only ./run.ts",
+    "build": "tsc",
+    "test": "mocha --timeout 5000 --reporter mochawesome -r ts-node/register ./test/*",
+    "lint": "tsc --noEmit && eslint '**/*.{js,ts,tsx}'"
+  },
+  "dependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/bitcore-lib-cash": "^8.23.1",
+    "@types/mocha": "^8.0.3",
+    "async-mutex": "^0.2.6",
+    "axios": "^0.20.0",
+    "bchaddrjs-slp": "^0.2.11",
+    "bignumber.js": "^9.0.0",
+    "bitcore-lib-cash": "^8.23.1",
+    "dotenv": "^8.2.0",
+    "electrum-cash": "^2.0.2",
+    "eventsource": "^1.0.7",
+    "grpc-bchrpc-node": "^0.11.3",
+    "mailgun-js": "^0.22.0",
+    "mocha": "^8.1.3",
+    "mochawesome": "^6.2.1",
+    "ts-node-dev": "^1.0.0-pre.44",
+    "tslog": "^3.0.2"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.14",
+    "@types/node": "^12.12.17",
+    "@types/sinon": "^9.0.8",
+    "@typescript-eslint/eslint-plugin": "^2.10.0",
+    "@typescript-eslint/parser": "^2.10.0",
+    "chai": "^4.2.0",
+    "eslint": "^6.7.2",
+    "typescript": "^3.9.7"
+  }
+}
