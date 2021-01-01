@@ -22,11 +22,10 @@ let lastRunFailed = false;
                 for (const suite of data.results.map(v => v.suites)[0]) {
                     for (const tests of suite.suites.map(v => v.tests)) {
                         for (const test of tests) {
-                            if (test.fail) {
-                                Log.error(`FAIL: ${test.fullTitle}`);
-                            }
                             if (test.timedOut) {
                                 Log.error(`TIMEOUT: ${test.fullTitle}`);
+                            } else if (test.fail) {
+                                Log.error(`FAIL: ${test.fullTitle}`);
                             }
                         }
                     }
