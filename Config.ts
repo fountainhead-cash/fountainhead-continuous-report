@@ -6,6 +6,10 @@ export interface ServerConfig {
     mailgunFrom: string;
     mailgunTo: string;
 
+    sendMail: boolean;
+    emailFrequencySeconds: number;
+    runDelaySeconds: number;
+
     bchdEnabled: boolean;
     bitdbEnabled: boolean;
     bitsocketEnabled: boolean;
@@ -31,6 +35,10 @@ const Config: ServerConfig = {
     mailgunDomain: process.env.MAILGUN_DOMAIN,
     mailgunFrom: process.env.MAILGUN_FROM,
     mailgunTo: process.env.MAILGUN_TO,
+
+    sendMail: true,
+    emailFrequencySeconds: 60*30,
+    runDelaySeconds: 1,
 
     bchdEnabled:      true,
     bitdbEnabled:     true,
