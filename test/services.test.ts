@@ -28,13 +28,48 @@ if (Config.bchdEnabled) describe('#BCHD-status', () => {
     });
 
     describe('#alive', () => {
-
         it('correct block time', () => {
             const t = getTime();
             chai.assert.equal(bchdMedianTime > t-10000 && bchdMedianTime < t+10000, true);
         });
     });
 });
+
+if (Config.bchdEnabled) describe('#BCHD-subscriptions', () => {
+    let client = null;
+    let sub = null;
+
+    before(async () => {
+        client = new GrpcClient({ url: Config.bchdUrl });
+
+        sub = await client.subscribeTransactions({
+            includeBlockAcceptance: false,
+            includeMempoolAcceptance: true,
+            includeSerializedTxn: false,
+        });
+    });
+
+
+    describe('#subscribeTransactions', () => {
+        it('subscribe and get a transaction data', (done) => {
+            sub.on("data", (data) => {
+                sub.cancel();
+                done();
+            });
+
+            sub.on("error", (e) => {
+                // cancellation code
+                if (e.code === 1) {
+                    return;
+                }
+                sub.cancel();
+                chai.assert.equal(`onerror ${JSON.stringify(e)}`, 'error');
+                done();
+            });
+        });
+    });
+});
+
 
 if (Config.bchdEnabled) describe('#BCHDWEB-status', () => {
     let res = null;
